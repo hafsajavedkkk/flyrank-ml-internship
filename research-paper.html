@@ -90,22 +90,39 @@
   <main>
 
     <section>
-      <h2>Abstract</h2>
+  <h2>1. Introduction and Problem Statement</h2>
 
-      <div class="box">
-        <p>
-          This project investigates whether historical search-performance
-          signals can help identify page/query observations that deserve
-          content or SEO review. The analysis uses the FlyRank Internship
-          Warehouse dataset and compares a transparent baseline with a
-          machine-learning approach under a consistent validation design.
-          The resulting system produces ranked opportunities intended to
-          help a human reviewer decide what to inspect first. Results are
-          interpreted as observed decision-support evidence rather than
-          proof that a recommended change will improve future performance.
-        </p>
-      </div>
-    </section>
+  <p>
+    Search-performance datasets can contain a large number of
+    page/query observations, making it difficult for a reviewer to
+    inspect every opportunity manually.
+  </p>
+
+  <p>
+    The research question for this project is:
+    <strong>
+      Can historical search-performance signals be used to identify
+      and rank page/query observations that may deserve content or
+      SEO review?
+    </strong>
+  </p>
+
+  <p>
+    The purpose is prioritization. Instead of treating every
+    observation equally, the system provides a ranked queue that
+    allows a human reviewer to inspect potentially useful
+    opportunities first. The output is decision support and does not
+    automatically modify or publish content.
+  </p>
+
+  <p>
+    This problem reflects a real FlyRank content challenge: when many
+    page/query observations compete for attention, reviewers need a
+    defensible way to decide what to inspect first. This project tests
+    whether historical search-performance signals can support that
+    prioritization while keeping the final decision with a human reviewer.
+  </p>
+</section>
 
     <section>
       <h2>1. Introduction and Problem Statement</h2>
