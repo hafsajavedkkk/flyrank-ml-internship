@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ML Research Paper | Hafsa Javed</title>
+
+  <meta name="description"
+        content="Machine learning research project completed during the FlyRank ML Internship.">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.7;
+      background: #f9fafb;
+      color: #111827;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 5px;
+    }
+
+    h2 {
+      color: #2563eb;
+      margin-top: 50px;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 8px;
+    }
+
+    .subtitle {
+      color: #4b5563;
+      margin-bottom: 40px;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      margin: 20px 0;
+    }
+
+    th, td {
+      border: 1px solid #d1d5db;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f3f4f6;
+    }
+
+    a {
+      color: #2563eb;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 20px;
+      border-top: 1px solid #d1d5db;
+      color: #4b5563;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Prioritizing Search Opportunities with Machine Learning</h1>
+
+    <p class="subtitle">
+      A decision-support study of historical search-performance signals
+    </p>
+
+    <p><strong>Author:</strong> Hafsa Javed</p>
+    <p><strong>Project:</strong> FlyRank Machine Learning Internship Capstone</p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Abstract</h2>
+
+      <div class="box">
+        <p>
+          This project investigates whether historical search-performance
+          signals can help identify page/query observations that deserve
+          content or SEO review. The analysis uses the FlyRank Internship
+          Warehouse dataset and compares a transparent baseline with a
+          machine-learning approach under a consistent validation design.
+          The resulting system produces ranked opportunities intended to
+          help a human reviewer decide what to inspect first. Results are
+          interpreted as observed decision-support evidence rather than
+          proof that a recommended change will improve future performance.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>1. Introduction and Problem Statement</h2>
+
+      <p>
+        Search-performance datasets can contain a large number of
+        page/query observations, making it difficult for a reviewer to
+        inspect every opportunity manually.
+      </p>
+
+      <p>
+        The research question for this project is:
+        <strong>
+          Can historical search-performance signals be used to identify
+          and rank page/query observations that may deserve content or
+          SEO review?
+        </strong>
+      </p>
+
+      <p>
+        The purpose is prioritization. Instead of treating every
+        observation equally, the system provides a ranked queue that
+        allows a human reviewer to inspect potentially useful
+        opportunities first. The output is decision support and does not
+        automatically modify or publish content.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Data</h2>
+
+      <p>
+        The analysis uses data from the FlyRank Internship Warehouse.
+        The unit of analysis is a page/query observation within a
+        consistent analysis window.
+      </p>
+
+      <p>
+        Features are restricted to information that could reasonably be
+        available at the decision moment. Client-identifying information,
+        future-window information, target-derived fields, and known
+        leakage fields are excluded from model inputs.
+      </p>
+
+      <p>
+        Results in this paper are presented in aggregate or using
+        public-safe examples. No private client names or private queries
+        are intentionally included.
+      </p>
+    </section>
+
+    <section>
+      <h2>3. Methodology</h2>
+
+      <p>
+        I first constructed a transparent baseline so that the
+        machine-learning approach had an honest benchmark to beat.
+        The baseline and model were evaluated using the same target,
+        data, metric, and validation logic.
+      </p>
+
+      <p>
+        Features represent information available at prediction time.
+        The workflow also included checks for label-derived information
+        and future-data leakage.
+      </p>
+
+      <p>
+        An honest grouped or time-aware validation approach was used
+        where appropriate to reduce the risk of learning patterns that
+        would not be available in a realistic future decision.
+      </p>
+
+      <p>
+        Model performance is interpreted relative to the baseline rather
+        than assuming that additional complexity automatically produces
+        a better decision system.
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Results: Model vs Baseline</h2>
+
+      <p>
+        The baseline and machine-learning model were compared under the
+        same validation design. This comparison asks whether the model
+        provides useful predictive signal beyond the simpler rule.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Interpretation</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Baseline</td>
+            <td>
+              Transparent reference rule used as the minimum benchmark.
+            </td>
+          </tr>
+
+          <tr>
+            <td>Machine-learning model</td>
+            <td>
+              Evaluated against the same data, split and metric to test
+              whether additional predictive signal was observed.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        The detailed executed results and model outputs are retained in
+        the project notebooks. The reported comparison should be read as
+        measured performance on the observed validation data rather than
+        a guarantee of future outcomes.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Limitations and Honest Framing</h2>
+
+      <p>
+        This analysis is observational and cannot establish causation.
+        A high-priority recommendation therefore does not prove that
+        changing a page will cause its performance to improve.
+      </p>
+
+      <p>
+        Historical search patterns may also change. Search systems,
+        competitors, content, user behaviour, and traffic composition can
+        all shift over time.
+      </p>
+
+      <p>
+        The analysis represents a specific observation window and model
+        errors remain possible. Recommendations should therefore be
+        interpreted as directional decision support and reviewed by a
+        person before action is taken.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Ranked Recommendations</h2>
+
+      <p>
+        The final output is a ranked review queue. Higher-ranked items
+        should be inspected first, but the ranking does not authorize
+        automatic changes.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Priority</th>
+            <th>Reason Code</th>
+            <th>Suggested Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>HIGH_IMPRESSIONS_LOW_CTR</td>
+            <td>Review title and search snippet</td>
+          </tr>
+
+          <tr>
+            <td>2</td>
+            <td>HIGH_IMPRESSIONS_LOW_CTR</td>
+            <td>Review content alignment</td>
+          </tr>
+
+          <tr>
+            <td>3</td>
+            <td>POSITION_OPPORTUNITY</td>
+            <td>Inspect ranking opportunity</td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>POSITION_OPPORTUNITY</td>
+            <td>Review page relevance</td>
+          </tr>
+
+          <tr>
+            <td>5</td>
+            <td>MONITOR</td>
+            <td>Monitor before taking action</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>
+        Each recommendation requires human review of context, data
+        quality, business relevance, and the proposed action before any
+        change is made.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Reproducibility</h2>
+
+      <p>
+        The analysis is documented in the public project repository.
+        The repository contains the task-framing, data-contract,
+        baseline, modeling, validation-audit, action-playbook, and
+        capstone notebooks used throughout the project.
+      </p>
+
+      <p>
+        <a
+          href="https://github.com/hafsajavedkkk/flyrank-ml-internship"
+          target="_blank"
+          rel="noopener noreferrer">
+          View the project repository
+        </a>
+      </p>
+
+      <p>
+        The primary capstone analysis is available under
+        <code>work/notebooks/capstone.ipynb</code>.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. Intended Use and Human Review</h2>
+
+      <p>
+        This system is intended to prioritize observations for human
+        inspection. It should not automatically publish, delete, or
+        materially change content.
+      </p>
+
+      <p>
+        A reviewer should verify the underlying data, page context,
+        business relevance, and recommendation before acting.
+      </p>
+    </section>
+
+    <section>
+      <h2>9. Acknowledgements &amp; Data Credit</h2>
+
+      <p>
+        Built on the FlyRank ML Internship dataset. Data and educational
+        resources were provided by
+        <a href="https://flyrank.ai/" target="_blank"
+           rel="noopener noreferrer">FlyRank</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>
+      Hafsa Javed — Machine Learning Internship Capstone
+    </p>
+  </footer>
+
+</body>
+</html>
